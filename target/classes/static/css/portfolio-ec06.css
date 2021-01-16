@@ -1,0 +1,199 @@
+
+/** EC Website - Setting　CSS **/
+
+html {
+	-webkit-box-sizing: border-box;
+	box-sizing: border-box;
+	font-size: 62.5%;
+}
+
+body.ec-setting {
+	background-color: #fffafa !important;
+	max-width: 1280px;
+	margin: 0 auto;
+}
+
+body.ec-setting footer {
+	background-color: #A6B7B3 !important;
+	padding: 60px 0px !important;
+	clear: both;
+}
+
+*,
+*:before,
+*:after {
+	-webkit-box-sizing: inherit;
+	box-sizing: inherit;
+}
+
+/* ==========================================================================
+Header
+========================================================================== */
+
+.ec-setting {
+	width: 100%;
+	max-width: 1080px;
+	background-color: #fdfdfd;
+	margin: 10px auto 0px auto;
+}
+
+.ec-setting-header {
+	width: 100%;
+	max-width: 1080px;
+	background-color: #fdfdfd;
+	margin: 10px auto 0px auto;
+}
+
+.ec-setting-header-home {
+	width: 100%;
+	max-width: 1080px;
+	background-color: #fdfdfd;
+	margin: 10px auto 0px auto;
+	display: table;
+  	table-layout: fixed;
+}
+
+.go-back-to-home {
+	display: table-cell;
+}
+
+.go-back-to-home a {
+	text-align: left;
+	font-size: 1.2em;
+	padding-left: 20px;
+}
+
+.ec-login {
+	text-align: right;
+	display: table-cell;
+}
+
+.ec-login-box {
+	display: inline-block;
+	font-size: 1.2em;
+	color: #4169e1;
+	margin-top: 10px;
+	margin-right: 10px;
+}
+
+.ec-starthere-box {
+	display: inline-block;
+	font-size: 1.2em;
+	color: #4169e1;
+	margin-top: 10px;
+	margin-left: 10px;
+}
+
+.ec-hellouser-box {
+	display: table;
+  	table-layout: fixed;
+}
+
+.hello-user {
+	margin-right: 20px;
+}
+
+.ec-logout {
+	display: table-cell;
+}
+
+.ec-header-title {
+	width: 100%;
+	max-width: 1080px;
+	background-color: #fdfdfd;
+	margin: 0 auto;
+}
+
+/* ==========================================================================
+Main
+========================================================================== */
+
+.ec-setting-main {
+	width: 100%;
+	max-width: 1080px;
+	margin: 0 auto;
+	padding-top: 50px;
+	background-color: #fdfdfd;
+	font-family: 'League Spartan', 'Butler', 'Meiryo', sans-serif;
+}
+
+.ec-see-cart {
+	display: table-cell;
+	padding-right: 10px;
+}
+
+.ec-see-cart a {
+	font-size: 0.7em;
+	color: #4b0082;
+}
+
+.ec-see-cart img {
+	width : 40px;
+	height : 40px;
+}
+
+.ec-see-favorites {
+	display: table-cell;
+	padding-right: 10px;
+}
+
+.ec-see-favorites a {
+	font-size: 0.7em;
+	color: #4b0082;
+}
+
+.ec-see-favorites img {
+	width : 40px;
+	height : 40px;
+}
+
+.ec-setting-cart {
+	display: table-cell;
+}
+
+.ec-setting-cart img {
+	width: 150px;
+	height: 50px;
+}
+
+.ec-setting-flist {
+	display: table-cell;
+}
+
+.ec-setting-flist img {
+	width: 150px;
+	height: 50px;
+}
+
+/* Message */
+.ec-registration-reg-message {
+	width: 100%;
+	max-width: 840px;
+	margin: 0 auto;
+}
+
+.ec-reg-error-message {
+	padding: 0;
+}
+
+.ec-reg-error-message p {
+	color: #ff0000;
+	font-size: 1.4rem;
+}
+
+.ec-reg-success-message {
+	padding: 0;
+}
+
+.ec-reg-success-message span {
+	color: #ff0000;
+	font-size: 1.4rem;
+}
+
+
+/* Form */
+.ec-registration-body-form {
+	width: 100%;
+	max-width: 840px;
+	margin: 0 auto;
+}

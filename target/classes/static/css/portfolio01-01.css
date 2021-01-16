@@ -1,0 +1,747 @@
+/**
+ * EC Website - CSS
+ */
+html {
+	font-size: 62.5%;
+	-webkit-text-size-adjust: 100%;
+	-ms-text-size-adjust: 100%;
+}
+
+html, button, input, select, textarea {
+	font-family: 'League Spartan', 'Meiryo', sans-serif;
+}
+
+html, html a {
+	-webkit-font-smoothing:
+	antialiased;
+	text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.004);
+}
+
+body {
+	margin: 0;
+	font-family: 'League Spartan', 'Meiryo', sans-serif;
+}
+
+body.home {
+	background-color: #fffafa;
+}
+
+body.home footer {
+	padding: 60px 0px !important; clear: both;
+	background-color: #A6B7B3;
+}
+
+/**
+ * Text Decoration
+ */
+h1 {
+	font-size: 42px;
+	line-height: 1.2em;
+	font-weight: 600;
+	font-family: 'League Spartan', 'Meiryo', sans-serif;
+	letter-spacing: 2px;
+	text-transform: uppercase;
+}
+
+h2 {
+	font-size: 1.5em;
+	margin: 0.83em 0;
+	letter-spacing: 3px;
+}
+
+h3 {
+	font-size: 1.17em;
+	margin: 1em 0;
+}
+
+h4 {
+	font-size: 1em;
+	margin: 1.33em 0;
+}
+
+h5 {
+	font-size: 0.83em;
+	margin: 1.67em 0;
+}
+
+h6 {
+	font-size: 0.75em;
+	margin: 2.33em 0;
+}
+
+.makoto-header-title h1.projecth1 {
+	font-size: 42px;
+}
+
+.white {
+	color: white;
+}
+
+.no-margin {
+	padding: 0px;
+	margin: 0px;
+}
+
+.logo {
+	font-size: 26px;
+	line-height: 1.2em;
+	font-weight: 600;
+	font-family: 'League Spartan', 'Meiryo', sans-serif;
+	letter-spacing: 2px;
+	text-transform: uppercase;
+	color: #fff;
+}
+
+.inner-title {
+	font-size: 22px;
+	line-height: 1.2em;
+	font-weight: 600;
+	font-family: 'League Spartan', 'Meiryo', sans-serif;
+	letter-spacing: 2px;
+	text-transform: uppercase;
+	margin: 0px;
+	text-align: center;
+	padding-bottom: 20px;
+}
+
+.logo:hover {
+	border-bottom: 2px solid #fff;
+	color: #fff;
+}
+
+/* If we use some browsers, these are not available. (written by Makoto) */
+abbr[title] {
+	border-bottom: 1px dotted;
+}
+
+blockquote {
+	margin: 1em 40px;
+}
+
+mark {
+	background: #ff0; color: #000;
+}
+
+dfn {
+	font-style: italic;
+}
+
+b, strong {
+	font-weight: bold;
+}
+
+p, pre {
+	margin: 1em 0;
+}
+
+dl, menu, ol, ul {
+	margin: 1em 0;
+}
+
+dd {
+	margin: 0 0 0 40px;
+}
+
+menu, ol, ul {
+	padding: 0 0 0 40px;
+}
+
+nav ul, nav ol {
+	list-style: none;
+	list-style-image: none;
+}
+
+a:focus {
+	outline: thin dotted;
+}
+
+a:active, a:hover {
+	outline: 0;
+}
+
+
+/* Be caution as the display changes using some browsers. (written by Makoto) */
+code, kbd, pre, samp {
+	font-family: monospace, serif;
+	_font-family: 'League Spartan', 'Meiryo', sans-serif, monospace;
+	font-size: 1em;
+}
+
+pre {
+	white-space: pre;
+	white-space: pre-wrap;
+	word-wrap: break-word;
+}
+
+small {
+	font-size: 75%;
+}
+
+sub, sup {
+	font-size: 75%;
+	line-height: 0;
+	position: relative;
+	vertical-align: baseline;
+}
+
+sup {
+	top: -0.5em;
+}
+
+sub {
+	bottom: -0.25em;
+}
+
+q {
+	quotes: none;
+}
+
+q:before, q:after {
+	content: '';
+	content: none;
+}
+
+
+/* Build-in type */
+img {
+	border: 0;
+	-ms-interpolation-mode: bicubic;
+}
+
+svg:not(:root) {
+	overflow: hidden;
+}
+
+figure {
+	margin: 0;
+}
+
+form {
+	margin: 0;
+}
+
+legend {
+	border: 0;
+	padding: 0;
+	white-space: normal;
+	*margin-left: -7px;
+}
+
+button, input, select, textarea {
+	font-size: 100%;
+	margin: 0;
+	vertical-align: baseline;
+	*vertical-align: middle;
+}
+
+button, input {
+	line-height: normal;
+}
+
+button, html input[type="button"],
+
+input[type="reset"], input[type="submit"] {
+	-webkit-appearance: button;
+	cursor: pointer;
+	*overflow: visible;
+}
+
+button[disabled], input[disabled] {
+	cursor: default;
+}
+
+/** Internet Explorer */
+input[type="checkbox"], input[type="radio"] {
+	box-sizing: border-box;
+	padding: 0;
+	*height: 13px;
+	*width: 13px;
+}
+
+/* * 1. Addresses `appearance` set to `searchfield` in Safari 5 and Chrome.
+* 2. Addresses `box-sizing` set to `border-box` in Safari 5 and Chrome
+*    (include `-moz` to future-proof). */
+input[type="search"] {
+	-webkit-appearance: textfield;
+	-moz-box-sizing: content-box;
+	-webkit-box-sizing: content-box;
+	box-sizing: content-box;
+}
+
+/* * Removes inner padding and search cancel button in Safari 5 and Chrome
+* on OS X. */
+input[type="search"]::-webkit-search-cancel-button, input[type="search"]::-webkit-search-decoration {
+	-webkit-appearance: none;
+}
+
+/* * Removes inner padding and border in Firefox 3+. */
+button::-moz-focus-inner, input::-moz-focus-inner {
+	border: 0;
+	padding: 0;
+}
+
+/* * 1. Removes default vertical scrollbar in IE 6/7/8/9.
+* 2. Improves readability and alignment in all browsers. */
+textarea {
+	overflow: auto; /* 1 */
+	vertical-align: top; /* 2 */
+}
+
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+/* ==========================================================================
+Global Styles
+========================================================================== */
+a {
+	color: #353535;
+	-webkit-transition: all 0.5s;
+	-moz-transition: all 0.5s;
+	-o-transition: all 0.5s;
+	transition: all 0.5s;
+}
+
+a:hover, a:focus {
+	color: #0093cb;
+	text-decoration: none;
+}
+
+p {
+	color: #8c9398;
+	word-spacing: 1px;
+	line-height: 25px;
+	font-size: 14px;
+}
+
+h2 {
+	font-size: 15px;
+	font-family: 'League Spartan', 'Meiryo', sans-serif;
+	color: #264461;
+	text-transform: uppercase;
+}
+
+h2::after {
+	content: " ";
+	border: solid 1px #5E7DFF;
+	display: block;
+	width: 75px;
+	margin: 15px auto;
+}
+
+.section-padding {
+	padding: 90px 0 100px
+}
+
+.dark-bg {
+	background: #f3f5f8;
+}
+
+.light-bg {
+	background-color: #fff;
+}
+
+.dark-box {
+	background: #f3f5f8;
+	-webkit-box-shadow: 0px 3px 0px 0px #f0f2f4;
+	-moz-box-shadow: 0px 3px 0px 0px #f0f2f4;
+	box-shadow: 0px 3px 0px 0px #f0f2f4;
+}
+
+.light-box {
+	background-color: #fff;
+	-webkit-box-shadow: 0px 3px 0px 0px #f0f2f4;
+	-moz-box-shadow: 0px 3px 0px 0px #f0f2f4;
+	box-shadow: 0px 3px 0px 0px #f0f2f4;
+	padding: 20px 0;
+}
+
+.light-box:hover, .light-box:focus {
+	-webkit-box-shadow: 0px 3px 0px 0px #0093cb;
+	-moz-box-shadow: 0px 3px 0px 0px #0093cb;
+	box-shadow: 0px 3px 0px 0px #0093cb;
+}
+
+.box-hover {
+	transition: all 500ms ease-in-out;
+	-webkit-transition: all 500ms ease-in-out;
+	-moz-transition: all 500ms ease-in-out;
+	-o-transition: all 500ms ease-in-out;
+}
+
+.box-hover:hover, .box-hover:focus {
+	transform: translate(0, -15px);
+	-webkit-transform: translate(0, -15px);
+	-ms-transform: translate(0, -15px);
+}
+
+.wrapper {
+	height: 650px;
+}
+
+.nopadding {
+	padding: 0;
+}
+
+.inner {
+	padding-top: 5px;
+}
+
+
+/* ==========================================================================
+Navigation
+========================================================================== */
+
+nav {
+	background-color: #E6E8EC;
+	margin-top: -1px;
+}
+
+nav ul {
+	list-style: none; padding: 0;
+}
+
+nav ul li {
+	color: rgba(255, 255, 255, 0.6);
+	display: block; border-bottom:1px dotted rgba(38, 68, 97, 0.2);
+	transition: all 0.5s ease;
+	-moz-transition: all 0.5s ease;
+	-webkit-transition: all 0.5s ease;
+	-o-transition: all 0.5s ease;
+	padding-left: 0;
+	position: relative;
+}
+
+nav ul li:last-child {
+	border: none;
+}
+
+nav ul li a {
+	color: rgba(0, 0, 0, 0.6);
+	display: block;
+	padding: 20px;
+	transition: all 0.5s ease;
+	-moz-transition: all 0.5s ease;
+	-webkit-transition: all 0.5s ease;
+	-o-transition: all 0.5s ease;
+	padding-left: 0;
+	position: relative;
+}
+
+nav ul li a:hover, nav ul li a:focus {
+	text-decoration: none;
+	color: rgba(0, 191, 255, 1);
+}
+
+#nav-toggle {
+	position: absolute;
+	right: 15px; top: 0; z-index: 999999;
+}
+
+#nav-toggle {
+	cursor: pointer;
+	padding: 10px 35px 16px 0px;
+}
+
+#nav-toggle span, #nav-toggle span:before, #nav-toggle span:after {
+	cursor: pointer;
+	border-radius: 1px;
+	-moz-border-radius: 1px;
+	-webkit-border-radius: 1px;
+	-o-border-radius: 1px;
+	height: 3px;
+	width: 35px;
+	background: #264461;
+	position: absolute;
+	display: block;
+	content: '';
+}
+
+#nav-toggle span:before {
+	top: -10px;
+}
+
+#nav-toggle span:after {
+	bottom: -10px;
+}
+
+#nav-toggle span, #nav-toggle span:before, #nav-toggle span:after {
+	transition: all 500ms ease-in-out;
+	-webkit-transition: all 500ms ease-in-out;
+	-moz-transition: all 500ms ease-in-out;
+	-o-transition: all 500ms ease-in-out;
+}
+
+#nav-toggle.active span {
+	background-color: transparent;
+}
+
+#nav-toggle.active span:before, #nav-toggle.active span:after {
+	top: 0;
+}
+
+#nav-toggle.active span:before {
+	transform: rotate(45deg);
+	-webkit-transform: rotate(45deg);
+	-ms-transform: rotate(45deg);
+}
+
+#nav-toggle.active span:after {
+	transform: translateY(-10px) rotate(-45deg);
+	-webkit-transform: translateY(-10px) rotate(-45deg);
+	-ms-transform: translateY(-10px) rotate(-45deg);
+	top: 10px;
+}
+
+.navicon {
+	position: relative;
+	height: 26px;
+}
+
+.indicator {
+	position: absolute;
+	right: 0 !important;
+}
+
+.pull {
+	display: none;
+}
+
+
+/* ==========================================================================
+makoto-header-title
+========================================================================== */
+.makoto-header-title {
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover;
+	padding: 10px 0 20px 0;
+	height: auto;
+}
+
+.makoto-header-title h1 {
+	font-size: 42px;
+	font-family: 'League Spartan', 'Meiryo', sans-serif;
+	letter-spacing: 8px;
+	margin: 10px;
+}
+
+.makoto-header-title h1 span {
+	color: #a1a9b0;
+	display: inline-block;
+}
+
+.makoto-header-title p {
+	letter-spacing: 1px;
+}
+
+.makoto-header-title h2 {
+	font-size: 1.5em;
+	font-family: 'League Spartan', 'Meiryo', sans-serif;
+	margin: 0.83em 0;
+	letter-spacing: 3px;
+}
+
+.makoto-header-title h3 {
+	font-size: 1em;
+	font-family: 'League Spartan', 'Meiryo', sans-serif;
+	margin: 0.83em 0;
+	letter-spacing: 3px;
+}
+
+.learn-more-btn {
+	border-bottom: 2px solid #0093cb;
+	padding: 15px 0px;
+	color: #333;
+	text-transform: uppercase;
+	letter-spacing: 1px;
+	display: inline-block;
+	margin: 60px 0 0;
+	font-size: 16px;
+}
+
+.makoto-header-title .learn-more-btn {
+	border: 1px solid #fff;
+	padding: 20px 40px;
+	color: #fff;
+	border-radius: 3px;
+}
+
+.learn-more-btn:hover, .learn-more-btn:focus {
+	color: #0093cb;
+}
+
+.makoto-header-title .learn-more-btn:hover, .makoto-header-title .learn-more-btn:focus {
+	opacity: 1;
+	border-color: #0093cb;
+	color: #fff;
+}
+
+.makoto-header-title:hover, .makoto-header-title:focus {
+	opacity: 1;
+	border-color: #0093cb;
+	color: #264461;
+}
+
+
+/* ==========================================================================
+Main
+========================================================================== */
+
+.makoto-main {
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover;
+	padding: 0 0 50px 0;
+	height: auto;
+}
+
+/* ==========================================================================
+FlexSlider Custom CSS
+========================================================================== */
+ul.slides li {
+	margin-bottom: 0px;
+}
+
+/**
+.portfolio-slider {
+	padding-bottom: 20px;
+}
+**/
+
+/* Contact Form */
+#message {
+	padding-bottom: 10px;
+	color: #0093cb;
+	text-align: center;
+}
+
+form {
+	padding: 0px 0px 20px 0px;
+}
+
+form .row {
+	width: 100%;
+	display: block;
+	padding: 6px 0px;
+}
+
+form .row span {
+	width: 90px;
+	padding-top: 5px;
+	float: left;
+}
+
+form input {
+	padding: 16px;
+	border: none;
+	border: 0px;
+	font-size: 16px;
+	width: 100%;
+	letter-spacing: 1px;
+}
+
+form textarea {
+	padding: 16px;
+	border: 0px;
+	font-size: 16px;
+	width: 100%;
+	margin: 5px 0px;
+}
+
+form .row .field {
+	float: left;
+	width: 100%;
+}
+
+input[type=submit] {
+  -moz-appearance: button;
+  -moz-binding: none;
+  -moz-box-sizing: border-box;
+  -moz-user-select: none;
+  -webkit-appearance: none;
+  cursor: pointer;
+	text-align: center;
+	border: 2px solid #eeeeee;
+	padding: 15px 0px;
+	font-size: 12px;
+	margin: 10px auto;
+	width: 120px;
+	display: block;
+	text-decoration: none;
+	font-family: 'League Spartan', 'Meiryo', sans-serif;
+	background-color: #fff;
+	font-weight: 100;
+	letter-spacing: 1px;
+	color: #999;
+	text-transform: uppercase;
+	-webkit-border-radius: 6px;
+	-moz-border-radius: 6px;
+	border-radius: 6px;
+  -moz-transition: all 0.4s ease-in-out;
+  -webkit-transition: all 0.4s ease-in-out;
+  -o-transition: all 0.4s ease-in-out;
+  -ms-transition: all 0.4s ease-in-out;
+  transition: all 0.4s ease-in-out;
+}
+
+/* ==========================================================================
+Footer
+========================================================================== */
+footer {
+	background-color: #A6B7B3;
+	color: #8c9398;
+	padding: 50px 0;
+	text-align: center;
+	text-transform: uppercase;
+}
+
+footer a {
+	color: #264461;
+}
+
+footer p {
+	color: #fff;
+}
+
+ul.legals {
+	list-style: none;
+	color: #8c9398;
+	font-size: 14px;
+	margin: 20px auto;
+	padding: 0px !important;
+}
+
+ul.legals li {
+	display: inline-block;
+	padding: 0px 20px;
+	margin: 0px;
+}
+
+ul.legals li:last-child {
+	border-right: none;
+}
+
+footer .fa {
+	padding-right: 5px;
+}
+
+footer .copy {
+	font-size: 8px;
+	text-align: center;
+	color: #264461;
+}
+
+ul.social li {
+	padding: 0px 5px;
+	font-size: 20px !important;
+}
+
+.line {
+	border-bottom: 2px solid #5E7DFF;
+	width: 140px;
+	margin: 0 auto;
+}

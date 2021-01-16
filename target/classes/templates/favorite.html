@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org" xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+	<head>
+		<title>EC website (sample) - Makoto</title>
+
+		<!-- Meta -->
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="description" content="Makoto - Freelancer">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+
+		<link rel="stylesheet" type="text/css" th:href="@{/css/bootstrap.min.css}"/>
+		<link rel="stylesheet" type="text/css" th:href="@{/css/animate.css}"/>
+		<link rel="stylesheet" type="text/css" th:href="@{/css/flexslider.css}"/>
+		<link rel="stylesheet" type="text/css" th:href="@{/css/portfolio01-01.css}"/>
+		<link rel="stylesheet" type="text/css" th:href="@{/css/portfolio01-02.css}"/>
+		<link rel="stylesheet" type="text/css" th:href="@{/css/portfolio01-03.css}"/>
+		<link rel="stylesheet" type="text/css" th:href="@{/css/portfolio-ec03.css}"/>
+	</head>
+
+	<body id="ec-favorite-list" class="ec-favorite-list">
+		<header class="ec-favorite-header">
+			<div class="ec-favorite-list" id="ec-favorite-list">
+				<div class="go-back-to-home">
+					<a href="/index">Home</a>
+				</div>
+
+				<!-- Login -->
+				<section class ="ec-login" id="ec-login">
+					<div th:unless="${session == null}" class="ec-login-box">
+						<div class="hello-user">
+							<a href="/setting">Hello, <span th:text="${session.userName}"></span> !!</a>
+						</div>
+						<div class="ec-hellouser-box">
+							<div class="ec-see-cart">
+								<a href="/see-cart"><img th:src="@{/img/cart-icon.png}" alt="Cart"></img></a>
+							</div>
+							<div class="ec-customer-setting">
+								<a href="/setting"><img th:src="@{/img/setting-icon.png}" alt="Setting"></img></a>
+							</div>
+							<div class="ec-logout">
+								<form method="post" th:action="@{/logout}">
+					     			<input type="submit" value="logout">
+								</form>
+							</div>
+						</div>
+					</div>
+				</section>
+
+			</div>
+
+			<section class="ec-header-title ec-favorite-title" id="ec-header-title">
+				<div class="row">
+					<div class="col-md-8 col-md-offset-2 text-center inner">
+						<h1 class="animated fadeInUp delay-05s">Favorites</h1>
+					</div>
+				</div>
+			</section>
+
+		</header>
+
+		<div id="favorite-list-main" class="favorite-list-main">
+			<div id="flist-body" class="flist-body">
+				<div th:each="favorite :  ${session.favoriteList}" id="flist-item" class="flist-item">
+					<div class="ec-item-image">
+						<img th:src="@{'/img/' + ${favorite.productId} + '.jpg'}" alt="thumbnail"></img>
+					</div>
+					<div class="item-description">
+						<div class="item-name">
+							<a th:href="'/product?p=' +${favorite.productId}" th:utext="${favorite.productName}"></a>
+						</div>
+						<div class="item-price">
+							<span>$</span><span th:utext="${favorite.price}"></span>
+						</div>
+						<div class="item-stock">
+							<div class="item-stock" th:switch="${favorite.stock}">
+								<p th:case="0">Currently Unavailable</p>
+								<p th:case="*">In Stock</p>
+							</div>
+						</div>
+					</div>
+
+					<div class="action-block" th:switch="${favorite.stock}">
+						<div th:case="0">
+							<div class="delete-item-zero">
+								<a th:href="@{'/delete-item?p=' + ${favorite.productId}}">
+									Delete
+								</a>
+							</div>
+						</div>
+
+						<div th:case="*" >
+							<form method="post" action="#" th:action="@{/move-next}" th:object="${Qty}">
+								<input type="hidden" name="p" th:value="${favorite.productId}">
+								<div class="add-cart">
+									<input type="submit" name="add-cart" class="cart-btn cart-btn--orange" value="add to cart">
+								</div>
+								<div class="purchase-now">
+									<input type="submit" name="purchase-now" class="purchase-btn purchase-btn--red" value="buy now">
+								</div>
+								<div class="details-block">
+									<div class="count-item">
+										Qty
+										<select id="qty" name="qty">
+											<th:block th:if="${favorite.stock}==1" >
+												<option value="1" th:selected="${qty == 1}">1</option>
+											</th:block>
+											<th:block th:if="${favorite.stock}==2" >
+												<option value="1" th:selected="${qty == 1}">1</option>
+												<option value="2" th:selected="${qty == 2}">2</option>
+											</th:block>
+											<th:block th:if="${favorite.stock}>=3" >
+												<option value="1" th:selected="${qty == 1}">1</option>
+												<option value="2" th:selected="${qty == 2}">2</option>
+												<option value="3" th:selected="${qty == 3}">3</option>
+											</th:block>
+										</select>
+									</div>
+									<div class="delete-item">
+										<a th:href="@{'/delete-item?p=' + ${favorite.productId}}">
+											Delete
+										</a>
+									</div>
+								</div>
+							</form>
+						</div>
+
+					</div>
+
+				</div>
+				<th:block th:if="${#lists.size(session.favoriteList)}==0" >
+					<div class="no-favorite-notice">
+						<span>There is not anything on your favorite list.</span>
+					</div>
+				</th:block>
+			</div>
+		</div>
+
+		<footer>
+			<div class="container">
+				<div class="row">
+					<div class="col-md-12">
+						<ul class="legals">
+							<li><a href="/index">Home</a></li>
+						</ul>
+						<div class="line"> </div>
+						<p class="copy">© 2021 Makoto  All Rights Reserved</p>
+					</div>
+				</div>
+			</div>
+		</footer>
+
+	</body>
+</html>

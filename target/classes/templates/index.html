@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org"
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+	<head>
+		<title>EC website (sample) - Makoto</title>
+
+		<!-- Meta -->
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="description" content="Makoto - Freelancer">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+
+		<link rel="stylesheet" type="text/css" th:href="@{/css/bootstrap.min.css}"/>
+		<link rel="stylesheet" type="text/css" th:href="@{/css/animate.css}"/>
+		<link rel="stylesheet" type="text/css" th:href="@{/css/flexslider.css}"/>
+		<link rel="stylesheet" type="text/css" th:href="@{/css/portfolio01-01.css}"/>
+		<link rel="stylesheet" type="text/css" th:href="@{/css/portfolio01-02.css}"/>
+		<link rel="stylesheet" type="text/css" th:href="@{/css/portfolio01-03.css}"/>
+		<link rel="stylesheet" type="text/css" th:href="@{/css/portfolio-ec01.css}"/>
+	</head>
+
+	<body id="ec-top" class="ec-top">
+		<header class="ec-top-header" id="ec-top-header">
+			<!-- Login -->
+			<section class ="ec-login" id="ec-login">
+				<div th:if="${session == null}" class="ec-login-box">
+					<div class="ec-login-box">
+						<a href="/login">Login</a>
+					</div>
+					<div class="ec-starthere-box">
+						<a href="/registration">Register</a>
+					</div>
+				</div>
+				<div th:unless="${session == null}" class="ec-login-box">
+					<div th:switch="${session.userName}">
+						<div th:case="'anonymousUser'">
+							<div class="ec-login-box">
+								<a href="/login">Login</a>
+							</div>
+							<div class="ec-starthere-box">
+								<a href="/registration">Register</a>
+							</div>
+						</div>
+						<div th:case="null">
+							<div class="ec-login-box">
+								<a href="/login">Login</a>
+							</div>
+							<div class="ec-starthere-box">
+								<a href="/registration">Register</a>
+							</div>
+						</div>
+						<div th:case="*">
+							<div class="hello-user">
+								<a href="/setting">Hello, <span th:text="${session.userName}"></span> !!</a>
+							</div>
+							<div class="ec-hellouser-box">
+								<div class="ec-see-cart">
+									<a href="/see-cart"><img th:src="@{/img/cart-icon.png}" alt="Cart"></img></a>
+								</div>
+								<div class="ec-see-favorites">
+									<a href="/see-favorites"><img th:src="@{/img/flist-icon.png}" alt="Your Favorites"></img></a>
+								</div>
+								<div class="ec-customer-setting">
+									<a href="/setting"><img th:src="@{/img/setting-icon.png}" alt="Setting"></img></a>
+								</div>
+								<div class="ec-logout">
+									<form method="post" th:action="@{/logout}">
+						     			<input type="submit" value="logout">
+									</form>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+
+			<!-- Title -->
+			<section class="ec-header-title" id="ec-header-title">
+				<div class="row">
+					<div class="col-md-8 col-md-offset-2 text-center inner">
+						<h1 class="animated fadeInUp delay-05s">EC</h1>
+					</div>
+				</div>
+			</section>
+		</header>
+
+		<!-- Body-->
+		<div class="ec-top-body" id="ec-top-body">
+			<div class="ec-top-body-inside">
+
+				<!-- Tag -->
+				<div class="ec-top-body-tag">
+					<div class="ec-top-body-tag-videos">
+						Electronics / Computers
+					</div>
+				</div>
+
+				<!-- Background -->
+				<div class="ec-top-body-background">
+					<ul>
+						<li>Show All</li>
+					</ul>
+				</div>
+
+				<!-- Contents -->
+				<div class="ec-top-body-grid-all">
+					<div class="ec-top-body-grid-sizer"></div>
+					<div class="ec-top-body-gutter-sizer"></div>
+
+					<!-- Each Product -->
+					<div th:each="mapItem, state : ${session.productMap}" class="ec-top-body-grid-item animated fadeInDown delay-10s">
+						<!-- Thumbnail -->
+						<div class="ec-top-body-grid-item-thumbnail">
+							<div class="ec-top-body-grid-item-thumbnail-img">
+								<img th:src="@{'/img/' + ${mapItem.value.productId} + '.jpg'}" alt="thumbnail01"></img>
+							</div>
+						</div>
+
+						<!-- Summary -->
+						<div class="ec-top-body-grid-item-summary">
+							<!-- Subject -->
+							<h5>
+								<a th:href="'/product?p=' +${mapItem.value.productId}">
+									<span th:utext="${mapItem.value.productName}"></span>
+								</a>
+							</h5>
+
+							<!-- Overview -->
+							<p th:utext="${mapItem.value.overview}"></p>
+						</div>
+					</div>
+
+				</div>
+			</div>
+		</div>
+
+		<footer>
+			<div class="container">
+				<div class="row">
+					<div class="col-md-12">
+						<ul class="legals">
+							<li><a href="/index">Home</a></li>
+						</ul>
+						<div class="line"> </div>
+						<p class="copy">© 2021 Makoto  All Rights Reserved</p>
+					</div>
+					</div>
+				</div>
+		</footer>
+	</body>
+</html>
