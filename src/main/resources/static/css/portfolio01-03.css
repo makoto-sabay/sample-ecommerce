@@ -1,0 +1,368 @@
+/**
+ * EC Website - CSS
+ * To move the page
+**/
+
+
+/* ==========================================================================
+Waypoints
+========================================================================== */
+.wp1, .wp2, .wp3, .wp4, .wp5, .wp6 {
+	visibility: hidden;
+}
+
+.bounceInLeft, .bounceInRight, .fadeInUp, .fadeInUpDelay, .fadeInDown, .fadeInUpD, .fadeInLeft, .fadeInRight {
+	visibility: visible;
+}
+
+.delay-01s {
+	animation-delay: 0.1s;
+	-webkit-animation-delay: 0.1s;
+}
+
+.delay-02s {
+	animation-delay: 0.2s;
+	-webkit-animation-delay: 0.2s;
+}
+
+.delay-03s {
+	animation-delay: 0.3s;
+	-webkit-animation-delay: 0.3s;
+}
+
+.delay-04s {
+	animation-delay: 0.4s;
+	-webkit-animation-delay: 0.4s;
+}
+
+.delay-05s {
+	animation-delay: 0.5s;
+	-webkit-animation-delay: 0.5s;
+}
+
+.delay-06s {
+	animation-delay: 0.6s;
+	-webkit-animation-delay: 0.6s;
+}
+
+.delay-07s {
+	animation-delay: 0.7s;
+	-webkit-animation-delay: 0.7s;
+}
+
+.delay-08s {
+	animation-delay: 0.8s;
+	-webkit-animation-delay: 0.8s;
+}
+
+.delay-09s {
+	animation-delay: 0.9s;
+	-webkit-animation-delay: 0.9s;
+}
+
+.delay-1s {
+	animation-delay: 1s;
+	-webkit-animation-delay: 1s;
+}
+
+.delay-11s {
+	animation-delay: 1.1s;
+	-webkit-animation-delay: 1.1s;
+}
+
+.delay-12s {
+	animation-delay: 1.2s;
+	-webkit-animation-delay: 1.2s;
+}
+
+.delay-13s {
+	animation-delay: 1.3s;
+	-webkit-animation-delay: 1.3s;
+}
+
+.delay-14s {
+	animation-delay: 1.4s;
+	-webkit-animation-delay: 1.4s;
+}
+
+.delay-15s {
+	animation-delay: 1.5s;
+	-webkit-animation-delay: 1.5s;
+}
+
+.delay-16s {
+	animation-delay: 1.6s;
+	-webkit-animation-delay: 1.6s;
+}
+
+.delay-17s {
+	animation-delay: 1.7s;
+	-webkit-animation-delay: 1.7s;
+}
+
+.delay-18s {
+	animation-delay: 1.8s;
+	-webkit-animation-delay: 1.8s;
+}
+
+.delay-19s {
+	animation-delay: 1.9s;
+	-webkit-animation-delay: 1.9s;
+}
+
+.delay-2s {
+	animation-delay: 2s;
+	-webkit-animation-delay: 2s;
+}
+
+.delay-21s {
+	animation-delay: 2.1s;
+	-webkit-animation-delay: 2.1s;
+}
+
+.delay-22s {
+	animation-delay: 2.2s;
+	-webkit-animation-delay: 2.2s;
+}
+
+.delay-23s {
+	animation-delay: 2.3s;
+	-webkit-animation-delay: 2.3s;
+}
+
+.delay-24s {
+	animation-delay: 2.4s;
+	-webkit-animation-delay: 2.4s;
+}
+
+.delay-25s {
+	animation-delay: 2.5s;
+	-webkit-animation-delay: 2.5s;
+}
+
+.delay-26s {
+	animation-delay: 2.6s;
+	-webkit-animation-delay: 2.6s;
+}
+
+.delay-27s {
+	animation-delay: 2.7s;
+	-webkit-animation-delay: 2.7s;
+}
+
+.delay-28s {
+	animation-delay: 2.8s;
+	-webkit-animation-delay: 2.8s;
+}
+
+.delay-29s {
+	animation-delay: 2.9s;
+	-webkit-animation-delay: 2.9s;
+}
+
+.delay-3s {
+	animation-delay: 3s;
+	-webkit-animation-delay: 3s;
+}
+
+.delay-31s {
+	animation-delay: 3.1s;
+	-webkit-animation-delay: 3.1s;
+}
+
+.delay-32s {
+	animation-delay: 3.2;
+	-webkit-animation-delay: 3.2s;
+}
+
+.delay-33s {
+	animation-delay: 3.3s;
+	-webkit-animation-delay: 3.3s;
+}
+
+.delay-34s {
+	animation-delay: 3.4s;
+	-webkit-animation-delay: 3.4s;
+}
+
+.delay-35s {
+	animation-delay: 3.5s;
+	-webkit-animation-delay: 3.5s;
+}
+
+.delay-4s {
+	animation-delay: 4s;
+	-webkit-animation-delay: 4s;
+}
+
+.delay-45s {
+	animation-delay: 4.5s;
+	-webkit-animation-delay: 4.5s;
+}
+
+.delay-5s {
+	animation-delay: 5s;
+	-webkit-animation-delay: 5s;
+}
+
+.wp3 {
+	background: url('../img/iphone-bg.png') no-repeat center center;
+	background-position: 200px 10px;
+	height: 100%;
+}
+
+
+/** fade in **/
+.fadein {
+	opacity : 0.1;
+	transform : translate(0, 50px);
+	transition : all 1500ms;
+	}
+
+/*  */
+.fadein.scrollin {
+	opacity : 1;
+	transform : translate(0, 0);
+}
+
+
+
+
+/* ==========================================================================
+effects
+========================================================================== */
+.effects {
+	padding-left: 15px;
+}
+
+.effects .img {
+	position: relative;
+	margin-bottom: 0px;
+	position: relative;
+	z-index: 1;
+	overflow: hidden;
+}
+
+.effects .img:nth-child(n) {
+	margin-right: 5px;
+}
+
+.effects .img:first-child {
+	margin-left: -15px;
+}
+
+.effects .img:last-child {
+	margin-right: 0;
+}
+
+.effects .img img {
+	display: block;
+	margin: 0;
+	padding: 0;
+	height: auto;
+}
+
+.overlay {
+	display: block;
+	position: absolute;
+	z-index: 20;
+	background: rgba(100, 100, 100, 0.8);
+	overflow: hidden;
+	transition: all 0.5s;
+	-webkit-transition: all 0.5s;
+	-moz-transition: all 0.5s;
+	-o-transition: all 0.5s;
+	font-family: 'Raleway';
+	letter-spacing: 1px;
+	font-weight: normal !important;
+}
+
+.overlay a span:after {
+	content: " ";
+	border: solid 1px #fff;
+	display: block;
+	width: 55px;
+	margin: 15px auto;
+}
+
+a.close-overlay {
+	display: block;
+	position: absolute;
+	top: 0;
+	right: 0;
+	z-index: 100;
+	width: 45px;
+	height: 45px;
+	font-size: 20px;
+	font-weight: 700;
+	color: #fff;
+	line-height: 45px;
+	text-align: center;
+	background-color: #000;
+	cursor: pointer;
+}
+
+.overlay a {
+	display: block;
+}
+
+a.close-overlay.hidden {
+	display: none;
+}
+
+a.expand {
+	display: block;
+	position: absolute;
+	z-index: 100;
+	text-align: center;
+	color: #fff;
+	font-weight: 600;
+	font-size: 14px;
+	text-transform: uppercase;
+	line-height: 30px;
+}
+
+.overlay-effect .img i {
+	font-size: 30px;
+}
+
+.overlay-effect .overlay {
+	bottom: 0;
+	left: -1px;
+	right: 0;
+	width: 100%;
+	height: 100%;
+	opacity: 0;
+}
+
+.overlay-effect .overlay a.expand {
+	left: 0;
+	right: 0;
+	bottom: 47%;
+	margin: 0 auto -30px auto;
+}
+
+.overlay-effect .img.hover .overlay {
+	height: 100%; opacity: 1;
+}
+
+.img img {
+	width: -webkit-calc(100% + 40px) !important;
+	width: calc(100% + 40px) !important;
+	-webkit-transition: opacity 0.35s, -webkit-transform 0.35s;
+	transition: opacity 0.35s, transform 0.35s;
+	-moz-transition: opacity 0.35s, -moz-transform 0.35s;
+	-o-transition: opacity 0.35s, -o-transform 0.35s;
+	-webkit-transform: translate3d(-40px, 0, 0);
+	transform: translate3d(-40px, 0, 0);
+	-ms-transform: translate3d(-40px, 0, 0);
+}
+
+.designs {
+	position: absolute;
+	left: 0;
+	right: 0;
+	margin-left: auto;
+	margin-right: auto;
+	top: 50px;
+}

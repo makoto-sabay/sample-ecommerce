@@ -1,0 +1,122 @@
+
+/** EC Website - Registration　CSS **/
+
+html {
+	-webkit-box-sizing: border-box;
+	box-sizing: border-box;
+	font-size: 62.5%;
+}
+
+body.ec-registration {
+	background-color: #fffafa !important;
+	max-width: 1280px;
+	margin: 0 auto;
+}
+
+body.ec-registration footer {
+	background-color: #A6B7B3 !important;
+	padding: 60px 0px !important;
+	clear: both;
+}
+
+*,
+*:before,
+*:after {
+	-webkit-box-sizing: inherit;
+	box-sizing: inherit;
+}
+
+
+/* ==========================================================================
+ヘッダー
+========================================================================== */
+
+.ec-header {
+	width: 100%;
+	max-width: 1080px;
+	background-color: #fdfdfd;
+	margin: 10px auto 0px auto;
+	display: table;
+  	table-layout: fixed;
+}
+
+.ec-header-home {
+	width: 100%;
+	max-width: 1080px;
+	padding-top: 5px;
+	margin-bottom: 40px;
+	display: table;
+  	table-layout: fixed;
+}
+
+.go-back-to-home {
+	display: table-cell;
+	text-align: left;
+}
+
+.go-back-to-home a {
+	font-size: 1.2em;
+	padding-left: 20px;
+}
+
+.ec-login {
+	display: table-cell;
+	text-align: right;
+}
+
+.ec-login a {
+	font-size: 1.2em;
+	padding-right: 20px;
+}
+
+
+/* ==========================================================================
+Main
+========================================================================== */
+
+.ec-registration-body {
+	width: 100%;
+	max-width: 1080px;
+	margin: 0 auto;
+	padding-top: 50px;
+	padding-bottom: 50px;
+	background-color: #fdfdfd;
+	font-family: 'League Spartan', 'Butler', 'Meiryo', sans-serif;
+}
+
+
+/* Message */
+.ec-registration-reg-message {
+	width: 100%;
+	max-width: 840px;
+	margin: 0 auto;
+}
+
+.ec-reg-error-message {
+	padding: 0;
+}
+
+.ec-reg-error-message p {
+	color: #ff0000;
+	font-size: 1.4rem;
+}
+
+.ec-reg-success-message {
+	padding: 0;
+}
+
+.ec-reg-success-message span {
+	color: #ff0000;
+	font-size: 1.4rem;
+}
+
+
+/* Form */
+.ec-registration-body-form {
+	width: 100%;
+	max-width: 840px;
+	margin: 0 auto;
+}
+
+
+

@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org" xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+	<head>
+		<title>EC website (sample) - Makoto</title>
+
+		<!-- Meta -->
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="description" content="Makoto - Freelancer">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+
+		<link rel="stylesheet" type="text/css" th:href="@{/css/bootstrap.min.css}"/>
+		<link rel="stylesheet" type="text/css" th:href="@{/css/animate.css}"/>
+		<link rel="stylesheet" type="text/css" th:href="@{/css/flexslider.css}"/>
+		<link rel="stylesheet" type="text/css" th:href="@{/css/portfolio01-01.css}"/>
+		<link rel="stylesheet" type="text/css" th:href="@{/css/portfolio01-02.css}"/>
+		<link rel="stylesheet" type="text/css" th:href="@{/css/portfolio01-03.css}"/>
+		<link rel="stylesheet" type="text/css" th:href="@{/css/portfolio-ec04.css}"/>
+	</head>
+
+	<body id="ec-purchase" class="ec-purchase">
+		<header class="ec-purchase-header">
+			<div class="ec-purchase-header-home-login" id="ec-purchase-header-home-login">
+				<div class="go-back-to-home">
+					<a href="/index">Home</a>
+				</div>
+
+				<!-- User, Logout -->
+				<section class ="ec-login" id="ec-login">
+					<div th:unless="${session == null}" class="ec-login-box">
+						<div class="hello-user">
+							<a href="/setting">Hello, <span th:text="${session.userName}"></span> !!</a>
+						</div>
+						<div class="ec-hellouser-box">
+							<div class="ec-see-favorites">
+								<a href="/see-favorites"><img th:src="@{/img/flist-icon.png}" alt="Your Favorites"></img></a>
+							</div>
+							<div class="ec-customer-setting">
+								<a href="/setting"><img th:src="@{/img/setting-icon.png}" alt="Setting"></img></a>
+							</div>
+							<div class="ec-logout">
+								<form method="post" th:action="@{/logout}">
+					     			<input type="submit" value="logout">
+								</form>
+							</div>
+						</div>
+					</div>
+				</section>
+			</div>
+
+			<section class="ec-header-title" id="ec-header-title">
+				<div class="row">
+					<div class="col-md-8 col-md-offset-2 text-center inner">
+						<th:block th:if="${session.sum}!=0" >
+							<h1 class="animated fadeInUp delay-05s">Thank you for your purchase!</h1>
+						</th:block>
+						<th:block th:if="${session.sum}==0" >
+							<h1 class="animated fadeInUp delay-05s">Sorry</h1>
+						</th:block>
+					</div>
+				</div>
+			</section>
+		</header>
+
+		<div id="purchase-main" class="purchase-main">
+			<div id="purchase-body" class="purchase-body">
+				<div th:each="purchaseHistory :  ${session.purchaseHistoryList}" id="purchase-item" class="purchase-item">
+					<div class="ec-item-image">
+						<img th:src="@{'/img/' + ${purchaseHistory.productId} + '.jpg'}" alt="thumbnail"></img>
+					</div>
+					<div class="item-description">
+						<div class="item-name">
+							<a th:href="${purchaseHistory.productId}" th:text="${purchaseHistory.productName}"></a>
+						</div>
+						<div class="item-price">
+							<span>$</span><span th:text="${purchaseHistory.price}"></span>
+						</div>
+					</div>
+					<div class="item-qty-sum">
+						<th:block th:if="${purchaseHistory.qty}==0" >
+							<div class="no-product-in-stock">
+								<p>【Sold Out】</p>
+								<span>We don't have the item in stock. So, you cannot buy the item.</span>
+							</div>
+						</th:block>
+						<th:block th:if="${purchaseHistory.qty}>=1" >
+							<div class="item-qty">
+								<span>Qty: </span><span th:text="${purchaseHistory.qty}"></span>
+							</div>
+							<div class="item-sum">
+								<span>$</span><span th:text="${purchaseHistory.price} * ${purchaseHistory.qty}"></span>
+							</div>
+						</th:block>
+					</div>
+				</div>
+			</div>
+
+			<div class="sum-block">
+				<div class="purchase-notice">
+					<th:block th:if="${session.sum}!=0" >
+						<p>We will send it to you after the purchase process.</p>
+						<span>Address: </span><span th:text="${session.address}"></span>
+					</th:block>
+				</div>
+				<div class="purchase-history-sum">
+					<span>SUM: $ </span><span th:text="${session.sum}"></span>
+				</div>
+			</div>
+
+		</div>
+
+		<footer>
+			<div class="container">
+				<div class="row">
+					<div class="col-md-12">
+						<ul class="legals">
+							<li><a href="/index">Home</a></li>
+						</ul>
+						<div class="line"> </div>
+						<p class="copy">© 2021 Makoto  All Rights Reserved</p>
+					</div>
+				</div>
+			</div>
+		</footer>
+
+	</body>
+</html>

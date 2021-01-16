@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org" xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+	<head>
+		<title>EC website (sample) - Makoto</title>
+
+		<!-- Meta -->
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="description" content="Makoto - Freelancer">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+
+		<link rel="stylesheet" type="text/css" th:href="@{/css/bootstrap.min.css}"/>
+		<link rel="stylesheet" type="text/css" th:href="@{/css/animate.css}"/>
+		<link rel="stylesheet" type="text/css" th:href="@{/css/flexslider.css}"/>
+		<link rel="stylesheet" type="text/css" th:href="@{/css/portfolio01-01.css}"/>
+		<link rel="stylesheet" type="text/css" th:href="@{/css/portfolio01-02.css}"/>
+		<link rel="stylesheet" type="text/css" th:href="@{/css/portfolio01-03.css}"/>
+		<link rel="stylesheet" type="text/css" th:href="@{/css/portfolio-ec05.css}"/>
+	</head>
+
+	<body id="ec-cart" class="ec-cart">
+		<header class="ec-cart-header">
+			<div class="ec-cart-list" id="ec-cart-list">
+				<div class="go-back-to-home">
+					<a href="/index">Home</a>
+				</div>
+
+				<!-- Login -->
+				<section class ="ec-login" id="ec-login">
+					<div th:unless="${session == null}" class="ec-login-box">
+						<div class="hello-user">
+								<a href="/setting">Hello, <span th:text="${session.userName}"></span> !!</a>
+						</div>
+						<div class="ec-hellouser-box">
+							<div class="ec-see-favorites">
+								<a href="/see-favorites"><img th:src="@{/img/flist-icon.png}" alt="Your Favorites"></img></a>
+							</div>
+							<div class="ec-customer-setting">
+								<a href="/setting"><img th:src="@{/img/setting-icon.png}" alt="Setting"></img></a>
+							</div>
+							<div class="ec-logout">
+								<form method="post" th:action="@{/logout}">
+					     			<input type="submit" value="logout">
+								</form>
+							</div>
+						</div>
+					</div>
+				</section>
+
+			</div>
+
+			<section class="ec-header-title" id="ec-header-title">
+				<div class="row">
+					<div class="col-md-8 col-md-offset-2 text-center inner">
+						<h1 class="animated fadeInUp delay-05s">Cart</h1>
+					</div>
+				</div>
+			</section>
+		</header>
+
+		<div id="cart-list-main" class="cart-list-main">
+			<div id="clist-body" class="clist-body">
+
+					<div th:each="cartitem :  ${session.cartList}" id="clist-item" class="clist-item">
+						<div class="ec-item-image">
+							<img th:src="@{'/img/' + ${cartitem.productId} + '.jpg'}" alt="thumbnail"></img>
+						</div>
+
+						<div class="item-description">
+							<div class="item-name">
+								<a th:href="'/product?p=' +${cartitem.productId}" th:utext="${cartitem.productName}"></a>
+							</div>
+							<div class="item-price">
+								<span>$</span><span th:utext="${cartitem.price}"></span>
+							</div>
+
+							<div class="action-block">
+								<div class="details-block">
+									<div class="count-item">
+										<form method="post" action="#" th:action="@{/c_qty}">
+											<input type="hidden" name="p" th:value="${cartitem.productId}">
+											Qty:
+											<select id="c_qty" name="c_qty" onchange="submit(this.form)">
+												<th:block th:if="${cartitem.stock}>=3" >
+													<option th:each="i : ${#numbers.sequence(1, 3)}" th:value="${i}" th:text="${i}" th:selected="${i==cartitem.qty}"></option>
+												</th:block>
+												<th:block th:if="${cartitem.stock}<3" >
+													<option th:each="i : ${#numbers.sequence(1, cartitem.stock)}" th:value="${i}" th:text="${i}" th:selected="${i==cartitem.qty}"></option>
+												</th:block>
+											</select>
+										</form>
+									</div>
+									<div class="delete-item">
+										<a th:href="@{'/delete-cart-item?p=' + ${cartitem.productId}}">
+											Delete
+										</a>
+									</div>
+								</div>
+							</div>
+						</div>
+
+						<div class="item-sum-block">
+							<span>$ </span><span th:text="${cartitem.sum}"></span>
+						</div>
+
+					</div>
+
+					<th:block th:if="${#lists.size(session.cartList)}>=1" >
+						<div class="sum-block">
+							<div class="cart-notice">
+								<th:block th:if="${session.sum}!=0" >
+									<p>We will send it to you after the purchase process.</p>
+									<span>Address: </span><span th:text="${session.address}"></span>
+								</th:block>
+							</div>
+							<div class="buy-block">
+								<div class="cart-sum">
+									<span>SUM: $ </span><span th:text="${session.sum}"></span>
+								</div>
+
+								<div class="purchase-now">
+									<form method="post" action="#" th:action="@{/purchase-items}">
+										<input type="submit" name="purchase-items" class="purchase-btn purchase-btn--red" value="buy">
+									</form>
+								</div>
+							</div>
+						</div>
+					</th:block>
+					<th:block th:if="${#lists.size(session.cartList)}==0" >
+						<div class="no-cart-notice">
+							<span>There is not anything in your cart.</span>
+						</div>
+					</th:block>
+
+			</div>
+		</div>
+
+		<footer>
+			<div class="container">
+				<div class="row">
+					<div class="col-md-12">
+						<ul class="legals">
+							<li><a href="/index">Home</a></li>
+						</ul>
+						<div class="line"> </div>
+						<p class="copy">© 2021 Makoto  All Rights Reserved</p>
+					</div>
+				</div>
+			</div>
+		</footer>
+
+	</body>
+</html>

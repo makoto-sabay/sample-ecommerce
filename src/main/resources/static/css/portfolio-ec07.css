@@ -1,0 +1,127 @@
+
+/** EC Website - Login CSS **/
+html {
+	-webkit-box-sizing: border-box;
+	box-sizing: border-box;
+	font-size: 62.5%;
+}
+
+body.ec-login-page {
+	background-color: #fffafa !important;
+	max-width: 1280px;
+	margin: 0 auto;
+}
+
+body.ec-login-page footer {
+	background-color: #A6B7B3 !important;
+	padding: 60px 0px !important;
+	clear: both;
+}
+
+*,
+*:before,
+*:after {
+	-webkit-box-sizing: inherit;
+	box-sizing: inherit;
+}
+
+
+/* ==========================================================================
+Header
+========================================================================== */
+
+.ec-header {
+	width: 100%;
+	max-width: 1080px;
+	background-color: #fdfdfd;
+	margin: 10px auto 0px auto;
+	display: table;
+  	table-layout: fixed;
+}
+
+.ec-header-home {
+	width: 100%;
+	max-width: 1080px;
+	padding-top: 5px;
+	margin-bottom: 40px;
+	display: table;
+  	table-layout: fixed;
+}
+
+.go-back-to-home {
+	display: table-cell;
+	text-align: left;
+}
+
+.go-back-to-home a {
+	font-size: 1.2em;
+	padding-left: 20px;
+}
+
+.ec-register {
+	display: table-cell;
+	text-align: right;
+}
+
+.ec-register a {
+	font-size: 1.2em;
+	padding-right: 20px;
+}
+
+
+/* ==========================================================================
+Main
+========================================================================== */
+
+.ec-login-body {
+	width: 100%;
+	max-width: 1080px;
+	margin: 0 auto;
+	padding-top: 50px;
+	padding-bottom: 50px;
+	background-color: #fdfdfd;
+	font-family: 'League Spartan', 'Butler', 'Meiryo', sans-serif;
+}
+
+.ec-login-err-message {
+	padding: 0;
+	text-align: center;
+}
+
+.ec-login-err-message span {
+	color: #ff0000;
+	font-size: 2.0rem;
+}
+
+.ec-login-form {
+	width: 100%;
+	max-width: 840px;
+	margin: 0 auto;
+
+}
+
+.ec-login-form-setting {
+	width: 600px;
+	padding: 20px;
+	margin: 0 auto;
+	background-color: #a9a9a9;
+	border-radius: 10px;
+}
+
+.ec-login-form-box {
+	margin: 10px auto;
+}
+
+.login-userid-textbox {
+	width: 420px;
+	margin: 20px auto;
+}
+
+.login-password-textbox {
+	width: 420px;
+	margin: 20px auto;
+}
+
+.ec-login-form-submit {
+	margin-top: 40px;
+}

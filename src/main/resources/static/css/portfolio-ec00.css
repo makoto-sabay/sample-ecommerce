@@ -1,0 +1,85 @@
+
+
+/** EC website for Error Page　CSS **/
+html {
+	-webkit-box-sizing: border-box;
+	box-sizing: border-box;
+	font-size: 62.5%;
+}
+
+body.ec-error {
+	background-color: #fffafa !important;
+	max-width: 1280px;
+	margin: 0 auto;
+}
+
+body.ec-error footer {
+	background-color: #A6B7B3 !important;
+	padding: 60px 0px !important;
+	clear: both;
+}
+
+*,
+*:before,
+*:after {
+	-webkit-box-sizing: inherit;
+	box-sizing: inherit;
+}
+
+/* ==========================================================================
+Header
+========================================================================== */
+
+.ec-error-header {
+	width: 100%;
+	max-width: 1080px;
+	background-color: #fdfdfd;
+	margin: 10px auto 0px auto;
+	display: table;
+  	table-layout: fixed;
+}
+
+.go-back-to-home {
+	display: table-cell;
+}
+
+.go-back-to-home a {
+	text-align: left;
+	font-size: 1.2em;
+	padding-left: 20px;
+}
+
+/* ==========================================================================
+main
+========================================================================== */
+
+.error-main {
+	width: 100%;
+	max-width: 1080px;
+	margin: 0 auto;
+	padding-top: 50px;
+	background-color: #fdfdfd;
+	font-family: 'League Spartan', 'Butler', 'Meiryo', sans-serif;
+}
+
+.error-body {
+	width: 100%;
+	max-width: 1080px;
+	margin: 0 auto 20px auto;
+	padding: .5rem;
+	background-color: #fdfdfd;
+}
+
+
+.error-message {
+	width: 100%;
+	max-width: 840px;
+  	margin: 40px auto;
+  	text-align: center;
+}
+
+.error-message span {
+	font-size: 1.6em;
+}
+
+

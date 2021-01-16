@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org" xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+	<head>
+		<title>EC website (sample) - Makoto</title>
+
+		<!-- Meta -->
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="description" content="Makoto - Freelancer">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+
+		<link rel="stylesheet" type="text/css" th:href="@{/css/bootstrap.min.css}"/>
+		<link rel="stylesheet" type="text/css" th:href="@{/css/animate.css}"/>
+		<link rel="stylesheet" type="text/css" th:href="@{/css/flexslider.css}"/>
+		<link rel="stylesheet" type="text/css" th:href="@{/css/portfolio01-01.css}"/>
+		<link rel="stylesheet" type="text/css" th:href="@{/css/portfolio01-02.css}"/>
+		<link rel="stylesheet" type="text/css" th:href="@{/css/portfolio01-03.css}"/>
+		<link rel="stylesheet" type="text/css" th:href="@{/css/portfolio-ec02.css}"/>
+	</head>
+
+	<body id="ec-item" class="ec-item">
+		<header class="ec-item-header" id="ec-item-header">
+			<div class="go-back-to-home">
+				<a href="/index">Home</a>
+			</div>
+			<!-- Login -->
+			<section class ="ec-login" id="ec-login">
+				<div th:if="${session == null}" class="ec-login-box">
+					<div class="ec-login-box">
+						<a href="/login">Login</a>
+					</div>
+					<div class="ec-starthere-box">
+						<a href="/registration">Register</a>
+					</div>
+				</div>
+				<div th:unless="${session == null}" class="ec-login-box">
+					<div th:switch="${session.userName}">
+						<div th:case="'anonymousUser'">
+							<div class="ec-login-box">
+								<a href="/login">Login</a>
+							</div>
+							<div class="ec-starthere-box">
+								<a href="/registration">Register</a>
+							</div>
+						</div>
+						<div th:case="null">
+							<div class="ec-login-box">
+								<a href="/login">Login</a>
+							</div>
+							<div class="ec-starthere-box">
+								<a href="/registration">Register</a>
+							</div>
+						</div>
+						<div th:case="*">
+							<div class="hello-user">
+								<a href="/setting">Hello, <span th:text="${session.userName}"></span> !!</a>
+							</div>
+							<div class="ec-hellouser-box">
+								<div class="ec-see-cart">
+									<a href="/see-cart"><img th:src="@{/img/cart-icon.png}" alt="Cart"></img></a>
+								</div>
+								<div class="ec-see-favorites">
+									<a href="/see-favorites"><img th:src="@{/img/flist-icon.png}" alt="Your Favorites"></img></a>
+								</div>
+								<div class="ec-customer-setting">
+									<a href="/setting"><img th:src="@{/img/setting-icon.png}" alt="Setting"></img></a>
+								</div>
+								<div class="ec-logout">
+									<form method="post" th:action="@{/logout}">
+						     			<input type="submit" value="logout">
+									</form>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+		</header>
+
+		<div class="ec-item-body">
+			<div class="ec-campaign">
+				<!--
+					We can insert any campaign information here!
+				 -->
+			</div>
+			<div id="ec-item-upper-layer" class="ec-item-upper-layer">
+				<div id="ec-item-image" class="ec-item-image">
+					<img th:src="@{'/img/' + ${session.product.productId} + '.jpg'}" alt="thumbnail"></img>
+				</div>
+
+				<div id="ec-item-overview" class="ec-item-overview">
+					<div class="ec-item-name">
+						<h2 th:text="${session.product.productName}"></h2>
+					</div>
+
+					<div class="ec-item-description">
+						<p th:text="${session.product.overview}"></p>
+					</div>
+				</div>
+
+				<div id="ec-purchase-item-box" class="ec-purchase-item-box">
+					<div class="ec-purchase-item">
+						<div class="item-price">
+							<span>$</span><span th:text="${session.product.price}"></span>
+						</div>
+
+						<div class="item-stock" th:switch="${session.product.stock}">
+							<p th:case="0">Currently Unavailable</p>
+							<p th:case="*">In Stock</p>
+						</div>
+
+						<div th:switch="${session.product.stock}">
+							<!--  We don't have the item in stock. -->
+							<div th:case="0">
+								<div class="favorite-list">
+									<a href="/add-flist" class="favorite-btn favorite-btn--light-blue">
+										Add to List
+									</a>
+								</div>
+								<div class="addlist-message">
+									<div th:unless="${errorMessage == null}">
+										<span th:text="${errorMessage}"></span>
+									</div>
+									<div th:unless="${successMessage == null}">
+										<span th:text="${successMessage}"></span>
+									</div>
+								</div>
+							</div>
+
+							<!-- We hava only one item in stock. -->
+							<div th:case="1">
+								<form method="post" th:action="@{/move-next}">
+									<input type="hidden" name="p" th:value="${session.product.productId}">
+									<div class="item-count">
+										<span class="item-count-notice">Our stock is just only one,</span><br />
+										<span class="item-count-notice">so you should act now before it is too late!</span><br /><br />
+										<span>Qty</span>
+										<select id="qty" name="qty">
+											<option value="1" th:selected="${qty == 1}">1</option>
+										</select>
+									</div>
+									<div class="put-item-in-the-cart">
+										<input type="submit" name="add-cart" class="cart-btn cart-btn--orange" value="Add to Cart" th:object="${Qty}">
+									</div>
+									<div class="purchase-now">
+										<input type="submit" name="purchase-now" class="purchase-btn purchase-btn--red" value="Buy Now" th:object="${Qty}">
+									</div>
+									<div class="favorite-list">
+										<a href="/add-flist" class="favorite-btn favorite-btn--light-blue">
+											Add to List
+										</a>
+									</div>
+									<div class="addlist-message">
+										<div th:unless="${errorMessage == null}">
+											<span th:text="${errorMessage}"></span>
+										</div>
+										<div th:unless="${successMessage == null}">
+											<span th:text="${successMessage}"></span>
+										</div>
+									</div>
+								</form>
+							</div>
+
+							<!-- We hava two items in stock. -->
+							<div th:case="2">
+								<form method="post" th:action="@{/move-next}">
+									<input type="hidden" name="p" th:value="${session.product.productId}">
+									<div class="item-count">
+										<span class="item-count-notice">Our stock is limited,</span><br />
+										<span class="item-count-notice">so you should act now before it is too late!</span><br /><br />
+										<span>Qty</span>
+										<select id="qty" name="qty">
+											<option value="1" th:selected="${qty == 1}">1</option>
+											<option value="2" th:selected="${qty == 2}">2</option>
+										</select>
+									</div>
+									<div class="put-item-in-the-cart">
+										<input type="submit" name="add-cart" class="cart-btn cart-btn--orange" value="Add to Cart" th:object="${Qty}">
+									</div>
+									<div class="purchase-now">
+										<input type="submit" name="purchase-now" class="purchase-btn purchase-btn--red" value="Buy Now" th:object="${Qty}">
+									</div>
+									<div class="favorite-list">
+										<a href="/add-flist" class="favorite-btn favorite-btn--light-blue">
+											Add to List
+										</a>
+									</div>
+									<div class="addlist-message">
+										<div th:unless="${errorMessage == null}">
+											<span th:text="${errorMessage}"></span>
+										</div>
+										<div th:unless="${successMessage == null}">
+											<span th:text="${successMessage}"></span>
+										</div>
+									</div>
+								</form>
+							</div>
+
+							<div th:case="*">
+								<form method="post" th:action="@{/move-next}">
+									<input type="hidden" name="p" th:value="${session.product.productId}">
+									<div class="item-count">
+										<span>Qty</span>
+										<select id="qty" name="qty">
+											<option value="1" th:selected="${qty == 1}">1</option>
+											<option value="2" th:selected="${qty == 2}">2</option>
+											<option value="3" th:selected="${qty == 3}">3</option>
+										</select>
+									</div>
+									<div class="put-item-in-the-cart">
+										<input type="submit" name="add-cart" class="cart-btn cart-btn--orange" value="Add to Cart" th:object="${Qty}">
+									</div>
+									<div class="purchase-now">
+										<input type="submit" name="purchase-now" class="purchase-btn purchase-btn--red" value="Buy Now" th:object="${Qty}">
+									</div>
+									<div class="favorite-list">
+										<a href="/add-flist" class="favorite-btn favorite-btn--light-blue">
+											Add to List
+										</a>
+									</div>
+									<div class="addlist-message">
+										<div th:unless="${errorMessage == null}">
+											<span th:text="${errorMessage}"></span>
+										</div>
+										<div th:unless="${successMessage == null}">
+											<span th:text="${successMessage}"></span>
+										</div>
+									</div>
+								</form>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+<!--
+			<div id="ec-item-middle-layer" class="ec-item-middle-layer">
+				<div id="ec-item-detail" class="ec-tem-detail">
+					<p th:text="${session.product.explanation1}"></p>
+				</div>
+			</div>
+
+			<div id="ec-line" class="ec-line">	<hr>	</div>
+
+			<div id="ec-item-lower-layer" class="ec-item-lower-layer">
+				<div id="ec-item-detail" class="ec-tem-detail">
+					<p th:text="${session.product.explanation2}"></p>
+				</div>
+			</div>
+ -->
+
+		</div>
+
+		<footer>
+			<div class="container">
+				<div class="row">
+					<div class="col-md-12">
+						<ul class="legals">
+							<li><a href="/index">Home</a></li>
+						</ul>
+						<div class="line"> </div>
+						<p class="copy">© 2021 Makoto  All Rights Reserved</p>
+					</div>
+				</div>
+			</div>
+		</footer>
+	</body>
+</html>

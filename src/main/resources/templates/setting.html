@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org" xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+	<head>
+		<title>EC website (sample) - Makoto</title>
+
+		<!-- Meta -->
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="description" content="Makoto - Freelancer">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+
+		<link rel="stylesheet" type="text/css" th:href="@{/css/bootstrap.min.css}"/>
+		<link rel="stylesheet" type="text/css" th:href="@{/css/animate.css}"/>
+		<link rel="stylesheet" type="text/css" th:href="@{/css/flexslider.css}"/>
+		<link rel="stylesheet" type="text/css" th:href="@{/css/portfolio01-01.css}"/>
+		<link rel="stylesheet" type="text/css" th:href="@{/css/portfolio01-02.css}"/>
+		<link rel="stylesheet" type="text/css" th:href="@{/css/portfolio01-03.css}"/>
+		<link rel="stylesheet" type="text/css" th:href="@{/css/portfolio-ec06.css}"/>
+	</head>
+
+	<body id="ec-setting" class="ec-setting">
+		<header class="ec-setting-header">
+			<div class="ec-setting-header-home" id="ec-setting-header-home">
+				<div class="go-back-to-home">
+					<a href="/index">Home</a>
+				</div>
+
+				<!-- User, Logout -->
+				<section class ="ec-login" id="ec-login">
+					<div th:unless="${session == null}" class="ec-login-box">
+						<div class="hello-user">
+							Hello, <span th:text="${session.userName}"></span> !!
+						</div>
+						<div class="ec-hellouser-box">
+							<div class="ec-see-cart">
+								<a href="/see-cart"><img th:src="@{/img/cart-icon.png}" alt="Cart"></img></a>
+							</div>
+							<div class="ec-see-favorites">
+								<a href="/see-favorites"><img th:src="@{/img/flist-icon.png}" alt="Your Favorites"></img></a>
+							</div>
+							<div class="ec-logout">
+								<form method="post" th:action="@{/logout}">
+					     			<input type="submit" value="logout">
+								</form>
+							</div>
+						</div>
+					</div>
+				</section>
+			</div>
+
+			<section class="ec-header-title" id="ec-header-title">
+				<div class="row">
+					<div class="col-md-8 col-md-offset-2 text-center inner">
+						<h1 class="animated fadeInUp delay-05s">Your Information</h1>
+					</div>
+				</div>
+			</section>
+		</header>
+
+
+		<div id="ec-setting-main" class="ec-setting-main">
+			<div class="ec-registration-reg-message">
+				<div class="ec-reg-error-message">
+					 <th:block th:object="${RegistrationUser}">
+						<p th:if="${#fields.hasErrors('customerName')}" th:errors="*{customerName}"></p>
+						<p th:if="${#fields.hasErrors('password')}" th:errors="*{password}"></p>
+						<p th:if="${#fields.hasErrors('phoneNumber')}" th:errors="*{phoneNumber}"></p>
+						<p th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></p>
+						<p th:if="${#fields.hasErrors('realName')}" th:errors="*{realName}"></p>
+						<p th:if="${#fields.hasErrors('address1')}" th:errors="*{address1}"></p>
+						<p th:if="${#fields.hasErrors('cardNum')}" th:errors="*{cardNum}"></p>
+					</th:block>
+				</div>
+				<div class="ec-reg-success-message">
+					<span th:utext="${successMessage}"></span>
+				</div>
+			</div>
+
+
+			<div class="ec-registration-body-form">
+				<form autocomplete="off" action="#" th:action="@{/re-register}" th:object="${RegistrationUser}" method="post" role="form">
+					<input type="text" name="customerId" th:value="*{customerId}" readonly /><br />
+					<input type="text" name="customerName" placeholder="Handle Name" th:value="*{customerName}" /><br />
+					<input type="password" name="password" placeholder="Password" /><br />
+					<input type="text" maxlength="16" name="phoneNumber" placeholder="Phone Number" th:value="*{phoneNumber}" oninput="value = value.replace(/[^0-9]+/i,'');" /><br />
+					<input type="text" name="email" placeholder="E-mail" th:value="*{email}" /><br />
+					<input type="text" name="realName" placeholder="Real Name" th:value="*{realName}" /><br />
+					<input type="text" name="address1" placeholder="Address" th:value="*{address1}" /><br />
+					<input type="text" maxlength="16" name="cardNum" placeholder="Card Number (No need for hyphens.)" oninput="value = value.replace(/[^0-9]+/i,'');" />
+					<br /><br />
+					<input type="submit" name="re-register" value="Register">
+				</form>
+			</div>
+		</div>
+
+		<footer>
+			<div class="container">
+				<div class="row">
+					<div class="col-md-12">
+						<ul class="legals">
+							<li><a href="/index">Home</a></li>
+						</ul>
+						<div class="line"> </div>
+						<p class="copy">© 2021 Makoto  All Rights Reserved</p>
+					</div>
+				</div>
+			</div>
+		</footer>
+
+	</body>
+</html>
