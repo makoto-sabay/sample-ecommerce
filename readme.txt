@@ -16,6 +16,6 @@ https://sabay-sabay.asia/
 ◆ Makoto (Twitter)
 https://twitter.com/Mac_Makoto1
 
-◆ Makoto - Blog
+◆ Makoto (note)
 https://note.com/mac_makoto
 
